@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private int round = 0;
+    [SerializeField]
+    private bool calcStart = false;
     // Start is called before the first frame update
     private void Start()
     {
@@ -20,5 +24,12 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         
+    }
+
+    public void NextRound()
+    {
+        round++;
+        Debug.Log(round);
+        calcStart = true;
     }
 }
