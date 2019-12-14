@@ -22,6 +22,7 @@ public class ServiceMenuController : MonoBehaviour
     private Dictionary<int , List<int>> choiceSaves = new Dictionary<int , List<int>>();
     private List<int> currentSave = new List<int>();
     private OrderViewer currentViewer;
+    public List<GameObject> texts = new List<GameObject>();
 
     #region UI组件相关
     public GameManager gameManager;
@@ -247,6 +248,39 @@ public class ServiceMenuController : MonoBehaviour
 
     #endregion
 
+    public void HumanText(bool m_switch)
+    {
+        switch (currentViewer.m_order.ID)
+        {
+            case (0) :
+            texts[0].SetActive(m_switch); break;
+        }
+    }
+
+    private GameObject currentText = null;
+    public void TextSelecter()
+    {
+        if (currentText != null)
+        {
+            currentText.SetActive(false);
+        }
+        switch (currentViewer.m_order.ID)
+        {
+            case 0 :
+            if (currentSave.Contains(1))
+            {
+                texts[1].SetActive(true);
+                currentText = texts[1];
+            }
+            if (currentSave.Contains(9))
+            {
+                texts[0].SetActive(true);
+                currentText = texts[0];
+            }
+            break;
+        }
+    }
+
     #region 开关
     //人类
     public void HumanFold()
@@ -260,7 +294,7 @@ public class ServiceMenuController : MonoBehaviour
             human.SetActive(false);
             humanText.text = "人类";
             humanOn = false;
-            if (gameManager.round >= 2)
+            if (gameManager.round >= 3)
             {
                 humanUpdate_1.SetActive(false);
                 humanToggle_1.isOn = false;
@@ -276,7 +310,7 @@ public class ServiceMenuController : MonoBehaviour
             human.SetActive(true);
             humanText.text = "人类√";
             humanOn = true;
-            if (gameManager.round >= 2)
+            if (gameManager.round >= 3)
             {
                 humanUpdate_1.SetActive(true);
             }
@@ -290,7 +324,7 @@ public class ServiceMenuController : MonoBehaviour
     //仿生人
     public void HumanGearFold()
     {
-        if (humanOn || animalOn || itemOn)
+        if (humanOn || animalOn || itemOn || gameManager.round < 2)
         {
             return;
         }
@@ -299,7 +333,7 @@ public class ServiceMenuController : MonoBehaviour
             humanGear.SetActive(false);
             humanGearText.text = "仿生人";
             humanGearOn = false;
-            if (gameManager.round >= 2)
+            if (gameManager.round >= 3)
             {
                 humanGearUpdate_1.SetActive(false);
                 humanGearToggle_1.isOn = false;
@@ -315,7 +349,7 @@ public class ServiceMenuController : MonoBehaviour
             humanGear.SetActive(true);
             humanGearText.text = "仿生人√";
             humanGearOn = true;
-            if (gameManager.round >= 2)
+            if (gameManager.round >= 3)
             {
                 humanGearUpdate_1.SetActive(true);
             }
@@ -328,7 +362,7 @@ public class ServiceMenuController : MonoBehaviour
 
     public void AnimalFold()
     {
-        if (humanGearOn || humanOn || itemOn)
+        if (humanGearOn || humanOn || itemOn || gameManager.round < 2)
         {
             return;
         }
@@ -337,7 +371,7 @@ public class ServiceMenuController : MonoBehaviour
             animal.SetActive(false);
             animalText.text = "动物";
             animalOn = false;
-            if (gameManager.round >= 2)
+            if (gameManager.round >= 3)
             {
                 animalUpdate.SetActive(false);
             }
@@ -348,7 +382,7 @@ public class ServiceMenuController : MonoBehaviour
             animal.SetActive(true);
             animalText.text = "动物√";
             animalOn = true;
-            if (gameManager.round >= 2)
+            if (gameManager.round >= 3)
             {
                 animalUpdate.SetActive(true);
             }
@@ -366,7 +400,7 @@ public class ServiceMenuController : MonoBehaviour
             item.SetActive(false);
             itemText.text = "物品";
             itemOn = false;
-            if (gameManager.round >= 2)
+            if (gameManager.round >= 3)
             {
                 itemUpdate.SetActive(false);
             }
@@ -377,7 +411,7 @@ public class ServiceMenuController : MonoBehaviour
             item.SetActive(true);
             itemText.text = "物品√";
             itemOn = true;
-            if (gameManager.round >= 2)
+            if (gameManager.round >= 3)
             {
                 itemUpdate.SetActive(true);
             }
