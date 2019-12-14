@@ -369,7 +369,7 @@ public class ServiceMenuController : MonoBehaviour
         if (animalOn)
         {
             animal.SetActive(false);
-            animalText.text = "动物";
+            animalText.text = "宠物";
             animalOn = false;
             if (gameManager.round >= 3)
             {
@@ -380,7 +380,7 @@ public class ServiceMenuController : MonoBehaviour
         else
         {
             animal.SetActive(true);
-            animalText.text = "动物√";
+            animalText.text = "宠物√";
             animalOn = true;
             if (gameManager.round >= 3)
             {
@@ -398,7 +398,7 @@ public class ServiceMenuController : MonoBehaviour
         if (itemOn)
         {
             item.SetActive(false);
-            itemText.text = "物品";
+            itemText.text = "物件";
             itemOn = false;
             if (gameManager.round >= 3)
             {
@@ -409,7 +409,7 @@ public class ServiceMenuController : MonoBehaviour
         else
         {
             item.SetActive(true);
-            itemText.text = "物品√";
+            itemText.text = "物件√";
             itemOn = true;
             if (gameManager.round >= 3)
             {
