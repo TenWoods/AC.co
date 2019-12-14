@@ -257,7 +257,8 @@ public class ServiceMenuController : MonoBehaviour
         }
     }
 
-    private GameObject currentText = null;
+    public GameObject currentText = null;
+    //文本选择
     public void TextSelecter()
     {
         if (currentText != null)
@@ -266,6 +267,7 @@ public class ServiceMenuController : MonoBehaviour
         }
         switch (currentViewer.m_order.ID)
         {
+            //订单0
             case 0 :
             if (currentSave.Contains(1))
             {
@@ -278,6 +280,47 @@ public class ServiceMenuController : MonoBehaviour
                 currentText = texts[0];
             }
             break;
+            //订单1
+            case 1 :
+            if (currentSave.Contains(4))
+            {
+                texts[2].SetActive(true);
+                currentText = texts[2];
+            }
+            if (currentSave.Contains(1))
+            {
+                texts[3].SetActive(true);
+                currentText = texts[3];
+            }
+            if (currentSave.Contains(7))
+            {
+                texts[4].SetActive(true);
+                currentText = texts[4];
+            }
+            if (currentSave.Contains(9))
+            {
+                texts[5].SetActive(true);
+                currentText = texts[5];
+            }
+            break;
+            //订单2
+            case 2 :
+            if (currentSave.Contains(4))
+            {
+                texts[6].SetActive(true);
+                currentText = texts[6];
+            }
+            else
+            {
+                if (currentSave.Count <= 0)
+                {
+                    break;
+                }
+                texts[7].SetActive(true);
+                currentText = texts[7];
+            }
+            break;
+
         }
     }
 
@@ -446,6 +489,8 @@ public class ServiceMenuController : MonoBehaviour
         {
             ItemFold();
         }
+        currentText.SetActive(false);
+        currentText = null;
         costSave = 0;
         costUI.text = costSave.ToString();
         currentSave.Clear();
@@ -459,8 +504,11 @@ public class ServiceMenuController : MonoBehaviour
             Off();
             return;
         }
+        gameManager.orderCount++;
+        gameManager.playerFund -= costSave;
+        gameManager.fundUI.text = gameManager.playerFund.ToString();
         currentSave.Sort();
-        Debug.Log(currentViewer.m_order.ID);
+        //Debug.Log(currentViewer.m_order.ID);
         AddChoice(currentViewer.m_order.ID);
         OrderViewer temp = gameObject.GetComponent<OrderMenuController>().currentViewer;
         if (temp != null)

@@ -7,8 +7,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     //玩家资金
-    private float playerFund = 1000;
+    public float playerFund = 1000;
     public int round = 1;
+    public int orderCount = 0;
     public OrderController orderController;
 
     public OrderMenuController orderMenuController;
@@ -20,6 +21,11 @@ public class GameManager : MonoBehaviour
     private bool initNextRound = false;
 
     public Dictionary<int,List<int>> dic;
+
+    public GameObject humanGear;
+    public GameObject animal;
+
+    public GameObject report;
 
     private void Start()
     {
@@ -47,7 +53,7 @@ public class GameManager : MonoBehaviour
         int[] exam = {1};
         //CheckAnswer(0,exam);
         //Order[] roll = orderController.RandomOrders(2);
-        Order[] roll = orderController.PushActiveOrders();
+        Order[] roll = PushOrder(round);
         orderMenuController.InitOrders(roll);
 //        Debug.Log(roll.Length);
         weekCount.text = round.ToString();
@@ -62,7 +68,14 @@ public class GameManager : MonoBehaviour
         round++;
         Debug.Log(round);
         calcStart = true;
+        CalcUISet();
         CalculateMoney();
+        report.SetActive(true);
+        if (round >= 2)
+        {
+            humanGear.SetActive(true);
+            animal.SetActive(true);
+        }
     }
 
     //回合结算确定按钮
@@ -71,6 +84,9 @@ public class GameManager : MonoBehaviour
         initNextRound = true;
         weekCount.text = round.ToString();
         fundUI.text = playerFund.ToString();
+        Order[] roll = PushOrder(round);
+        orderMenuController.InitOrders(roll);
+        report.SetActive(false);
     }
 
     #endregion
@@ -157,8 +173,21 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("> _ <");
         }
- 
+    }
 
+    //计算时关闭开启部分UI
+    public List<GameObject> offUI;
+    public List<GameObject> onUI;
+    public void CalcUISet()
+    {
+        foreach (var i in offUI)
+        {
+            i.SetActive(false);
+        }
+        foreach (var i in onUI)
+        {
+            i.SetActive(true);
+        }
     }
 
 }
