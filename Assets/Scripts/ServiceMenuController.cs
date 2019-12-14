@@ -9,22 +9,23 @@ public class ServiceMenuController : MonoBehaviour
     public GameObject humanGear;
     public GameObject animal;
     public GameObject item;
-    public GameObject other;
     public Text humanText;
     public Text humanGearText;
     public Text animalText;
     public Text itemText;
-    public Text otherText;
     private bool humanOn = false;
     private bool humanGearOn = false;
     private bool animalOn = false;
     private bool itemOn = false;
-    private bool otherOn = false;
+    public GameObject serviceMenu;
 
-
-
+    #region 下层菜单开关
     public void HumanFold()
     {
+        if (humanGearOn || animalOn || itemOn)
+        {
+            return;
+        }
         if (humanOn)
         {
             human.SetActive(false);
@@ -41,6 +42,10 @@ public class ServiceMenuController : MonoBehaviour
 
     public void HumanGearFold()
     {
+        if (humanOn || animalOn || itemOn)
+        {
+            return;
+        }
         if (humanGearOn)
         {
             humanGear.SetActive(false);
@@ -57,6 +62,10 @@ public class ServiceMenuController : MonoBehaviour
 
     public void AnimalFold()
     {
+        if (humanGearOn || humanOn || itemOn)
+        {
+            return;
+        }
         if (animalOn)
         {
             animal.SetActive(false);
@@ -73,6 +82,10 @@ public class ServiceMenuController : MonoBehaviour
 
     public void ItemFold()
     {
+        if (humanGearOn || humanOn || animalOn)
+        {
+            return;
+        }
         if (itemOn)
         {
             item.SetActive(false);
@@ -86,20 +99,16 @@ public class ServiceMenuController : MonoBehaviour
             itemOn = true;
         }
     }
+    #endregion
 
-    public void OtherFold()
+    public void On()
     {
-        if (otherOn)
-        {
-            other.SetActive(false);
-            otherText.text = "豪华功能<-";
-            otherOn = false;
-        }
-        else
-        {
-            other.SetActive(true);
-            otherText.text = "豪华功能>-";
-            otherOn = true;
-        }
+        serviceMenu.SetActive(true);
+        //TODO 服务初始化
+    }
+
+    public void Off()
+    {
+        serviceMenu.SetActive(false);
     }
 }
