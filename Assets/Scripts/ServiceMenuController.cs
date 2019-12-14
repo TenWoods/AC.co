@@ -292,7 +292,7 @@ public class ServiceMenuController : MonoBehaviour
         if (humanOn)
         {
             human.SetActive(false);
-            humanText.text = "人类";
+            humanText.text = "派遣员";
             humanOn = false;
             if (gameManager.round >= 3)
             {
@@ -308,7 +308,7 @@ public class ServiceMenuController : MonoBehaviour
         else
         {
             human.SetActive(true);
-            humanText.text = "人类√";
+            humanText.text = "派遣员√";
             humanOn = true;
             if (gameManager.round >= 3)
             {
@@ -331,7 +331,7 @@ public class ServiceMenuController : MonoBehaviour
         if (humanGearOn)
         {
             humanGear.SetActive(false);
-            humanGearText.text = "仿生人";
+            humanGearText.text = "安可";
             humanGearOn = false;
             if (gameManager.round >= 3)
             {
@@ -347,7 +347,7 @@ public class ServiceMenuController : MonoBehaviour
         else
         {
             humanGear.SetActive(true);
-            humanGearText.text = "仿生人√";
+            humanGearText.text = "安可√";
             humanGearOn = true;
             if (gameManager.round >= 3)
             {
