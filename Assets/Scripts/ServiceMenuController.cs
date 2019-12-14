@@ -278,28 +278,6 @@ public class ServiceMenuController : MonoBehaviour
                 currentText = texts[0];
             }
             break;
-            case 1 :
-            if (currentSave.Contains(4))
-            {
-                texts[2].SetActive(true);
-                currentText = texts[2];
-            }
-            if (currentSave.Contains(1))
-            {
-                texts[3].SetActive(true);
-                currentText = texts[3];
-            }
-            if (currentSave.Contains(7))
-            {
-                texts[4].SetActive(true);
-                currentText = texts[4];
-            }
-            if (currentSave.Contains(9))
-            {
-                texts[5].SetActive(true);
-                currentText = texts[5];
-            }
-            break;
         }
     }
 

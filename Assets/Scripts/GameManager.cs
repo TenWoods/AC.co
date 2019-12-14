@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour
     private bool initNextRound = false;
 
     public Dictionary<int,List<int>> dic;
-    public GameObject animal;
-    public GameObject humanGear;
 
     private void Start()
     {
@@ -65,11 +63,6 @@ public class GameManager : MonoBehaviour
         Debug.Log(round);
         calcStart = true;
         CalculateMoney();
-        if (round >= 2)
-        {
-            animal.SetActive(true);
-            humanGear.SetActive(true);
-        }
     }
 
     //回合结算确定按钮
@@ -78,7 +71,6 @@ public class GameManager : MonoBehaviour
         initNextRound = true;
         weekCount.text = round.ToString();
         fundUI.text = playerFund.ToString();
-        
     }
 
     #endregion
@@ -169,9 +161,4 @@ public class GameManager : MonoBehaviour
 
     }
 
-    //结算时关闭某些UI
-    private void CalcUIReset()
-    {
-
-    }
 }
