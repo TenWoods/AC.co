@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     //玩家资金
     private int playerFund;
-    //评价
-    private int playerConcept;
+    //经验
+    private int exp;
     //玩家等级
     private int playerLevel;
 

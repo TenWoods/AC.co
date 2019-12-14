@@ -22,11 +22,11 @@ public class OrderMenuController : MonoBehaviour
     public void On()
     {
         //TODO 订单按钮分配位置
-        float offset = 980.0f / orderNum;
-        float currentY = 490.0f;
+        float offset = 948.0f / orderNum;
+        float currentY = 458.0f;
         for(int i = 0; i < allOrders.Count; i++)
         {
-            allOrders[i].m_button.GetComponent<RectTransform>().anchoredPosition = new Vector3(-510.0f, currentY, 0.0f);
+            allOrders[i].m_button.GetComponent<RectTransform>().anchoredPosition = new Vector3(-516.0f, currentY, 0.0f);
             currentY -= offset;
         }
         currentViewer = allOrders[0];
@@ -37,7 +37,10 @@ public class OrderMenuController : MonoBehaviour
 
     public void Off()
     {
-        currentViewer.Off();
+        if (currentViewer != null)
+        {
+            currentViewer.Off();
+        }
         currentViewer = null;
         orderMenu.SetActive(false);
         onSwitch.SetActive(true);
