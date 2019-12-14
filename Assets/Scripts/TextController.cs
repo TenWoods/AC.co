@@ -10,6 +10,7 @@ public class TextController : MonoBehaviour
     private Color white;
     private Color dark;
     private bool isDark = true;
+
     // Start is called before the first frame update
     void Start()
     {

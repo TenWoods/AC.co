@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrderManager : MonoBehaviour
+public class OrderController : MonoBehaviour
 {
 
     // Start is called before the first frame update
