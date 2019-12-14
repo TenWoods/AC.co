@@ -9,16 +9,16 @@ public class OrderController : MonoBehaviour
     public GameManager gameManager;
     public Dictionary<int,Order> orderPool = new Dictionary<int, Order>();
     public OrderMenuController orderMenuController;
-    public int[] answer0 = {0,2,3};
+    public int[] answer0 = {1};
     public int[] answer1 = {1,2,3};
-    public int[] answer2 = {0,2,3};
+    public int[] answer2 = {0,313,3};
     public int[] answer3 = {1,2,3};
-    public int[] answer4 = {0,2,3};
+    public int[] answer4 = {0,3,3};
 
     // 根据设置生成的订单
     public void InitOrders()
     {
-        //Debug.Log("OrderController Init");
+        Debug.Log("OrderController Init");
         Order temp0 = new Order(this,0,1000,2,3,4,5,answer0,true);
         Order temp1 = new Order(this,1,1000,2,3,4,5,answer1,false);
         Order temp2 = new Order(this,2,1000,2,3,4,5,answer2,false);

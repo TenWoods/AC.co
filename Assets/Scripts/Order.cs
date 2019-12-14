@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
+using UnityEngine;
 public class Order
 {
     public OrderController oc;
@@ -40,6 +40,7 @@ public class Order
         Exp = exp;
         CostModule = costModule;
         Demands = demands;
+        //DeepCopy(demands);
         CompleteDegree = 0;
         NextOrderID = nextOrderId;
         IsSpLabel = false;
@@ -47,6 +48,19 @@ public class Order
         IsActive =  isActive;
 
 
+    }
+
+    private void DeepCopy(int[] demand)
+    {
+        for(int i = 0;i < demand.Length;i++)
+        {
+            Demands[i] = demand[i];
+        }
+    }
+
+    public void DebugItself()
+    {
+        Debug.Log(ID+" "+ Reward + " "+ RewardTime+Demands[0]+Demands[1]+Demands[2]);
     }
 
     //public void SetNextOrderActive()

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
     //玩家资金
     private float playerFund = 1000;
     public int round = 1;
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         orderController.InitOrders();
+        int[] exam = {1};
+        //CheckAnswer(0,exam);
         //Order[] roll = orderController.RandomOrders(2);
         Order[] roll = orderController.PushActiveOrders();
         orderMenuController.InitOrders(roll);
@@ -59,10 +62,7 @@ public class GameManager : MonoBehaviour
         round++;
         Debug.Log(round);
         calcStart = true;
-        // 这个时候改变接下来订单状态
-        Debug.Log(PushOrder(round).Length);
-        int[] ans = {0,2,4};
-        Debug.Log("Degree: "+CheckAnswer(round,ans));
+        CalculateMoney();
     }
 
     //回合结算确定按钮
@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour
         initNextRound = true;
         weekCount.text = round.ToString();
         fundUI.text = playerFund.ToString();
-
     }
 
     #endregion
@@ -107,22 +106,59 @@ public class GameManager : MonoBehaviour
         float count = 0;
         if(ID > 9)
             return 0.0f;
-        int[] answer = orderController.orderPool[ID].Demands;
-        for(int i = 0;i < answer.Length;i++)
+        List<int> answer = new List<int>();
+        for(int k = 0;k <orderController.orderPool[ID].Demands.Length;k++)
+        {
+            answer.Add(orderController.orderPool[ID].Demands[k]);
+        }
+        for(int i = 0;i < answer.Count;i++)
         {
             if(i < exam.Length)
             {
+                /*Debug.Log("ID:"+ID);
+                Debug.Log("i:"+i);
+                Debug.Log("Exam:"+exam[i]);
+                for(int j = 0;j<orderController.orderPool[ID].Demands.Length;j++)
+                {
+                    if(orderController.orderPool[ID].IsActive)
+                        Debug.Log("Answer:"+orderController.orderPool[ID].Demands[j]);
+
+                }*/
+                
                 if(exam[i] == answer[i])
                 count++;
             }
             else break;
         }
-        float score = count/(float)answer.Length;
+        float score = count/(float)answer.Count;
+        Debug.Log("命中率为："+score);
         orderController.orderPool[ID].CompleteDegree = score;
         this.playerFund += orderController.orderPool[ID].Reward * score;
         fundUI.text = this.playerFund.ToString();
         Debug.Log("当前持有" + this.playerFund);
         return score;
+    }
+
+    public void CalculateMoney()
+    {
+        if(dic != null)
+        {
+            foreach (var item in dic)
+            {
+                item.Value.Sort();
+                for(int i = 0;i < item.Value.ToArray().Length;i++)
+                {
+                    Debug.Log(item.Value.ToArray()[i]);
+                }
+                CheckAnswer(item.Key,item.Value.ToArray());
+            }
+        }
+        else
+        {
+            Debug.Log("> _ <");
+        }
+ 
+
     }
 
 }
