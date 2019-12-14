@@ -2096,7 +2096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1548467118
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2891,6 +2891,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ServiceMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 1280588534659134580, guid: 092630cbb45013a4082977f098a5bf46,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280588534692995842, guid: 092630cbb45013a4082977f098a5bf46,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u4EFF\u751F\u4EBA<-"
+      objectReference: {fileID: 0}
     - target: {fileID: 1280588534659134583, guid: 092630cbb45013a4082977f098a5bf46,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3006,11 +3016,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 371866722}
-    - target: {fileID: 1280588534692995842, guid: 092630cbb45013a4082977f098a5bf46,
-        type: 3}
-      propertyPath: m_Text
-      value: "\u4EFF\u751F\u4EBA<-"
-      objectReference: {fileID: 0}
     - target: {fileID: 1280588535021922670, guid: 092630cbb45013a4082977f098a5bf46,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3217,7 +3222,7 @@ PrefabInstance:
     - target: {fileID: 5800024404079377480, guid: 71eed167e8e2e8941b3b8c151ee15794,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5800024404212725198, guid: 71eed167e8e2e8941b3b8c151ee15794,
         type: 3}

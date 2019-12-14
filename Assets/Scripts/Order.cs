@@ -8,7 +8,7 @@ public class Order
     public int Reward {get;set;}                    // 报酬
     public int RewardTime {get;set;}                // 回报时间
     public int OrderMoney {get;set;}                // 定金
-    
+    public int OrderLife{get;set;}
     public int Exp {get;set;}                       // 经验值
 
     public int NextOrderID;
