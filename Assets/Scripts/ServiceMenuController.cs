@@ -69,13 +69,13 @@ public class ServiceMenuController : MonoBehaviour
         if (animalOn)
         {
             animal.SetActive(false);
-            animalText.text = "仿生人修吉<-";
+            animalText.text = "仿生人<-";
             animalOn = false;
         }
         else
         {
             animal.SetActive(true);
-            animalText.text = "仿生人修吉>-";
+            animalText.text = "仿生人>-";
             animalOn = true;
         }
     }
