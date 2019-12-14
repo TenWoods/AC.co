@@ -54,12 +54,12 @@ public class OrderMenuController : MonoBehaviour
         {
             GameObject temp = GameObject.Instantiate(orderPrefabs[i.ID]);
             temp.GetComponent<RectTransform>().SetParent(orderMenu.transform);
+            int count = temp.transform.parent.childCount;
+            //Debug.Log(temp.GetComponent<RectTransform>().GetSiblingIndex());
+            temp.GetComponent<RectTransform>().SetSiblingIndex(count - 2);
+            //Debug.Log(temp.GetComponent<RectTransform>().GetSiblingIndex() + "?");
             temp.GetComponent<OrderViewer>().m_order = i;
             allOrders.Add(temp.GetComponent<OrderViewer>());
-        }
-        foreach(var i in allOrders)
-        {
-            i.Print();
         }
     }
 }

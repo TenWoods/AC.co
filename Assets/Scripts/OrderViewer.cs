@@ -35,10 +35,4 @@ public class OrderViewer : MonoBehaviour
     {
         m_menu.SetActive(false);
     }
-
-    public void Print()
-    {
-        Debug.Log(m_order.ID);
-        Debug.Log("???");
-    }
 }

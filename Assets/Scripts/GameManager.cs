@@ -46,11 +46,7 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         orderController.InitOrders();
-        Order[] roll = orderController.RandomOrders(3);
-        foreach(var i in roll)
-        {
-            Debug.Log(i.ID);
-        }
+        Order[] roll = orderController.RandomOrders(2);
         orderMenuController.InitOrders(roll);
     }
 

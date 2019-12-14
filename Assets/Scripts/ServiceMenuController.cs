@@ -104,6 +104,7 @@ public class ServiceMenuController : MonoBehaviour
     public void On()
     {
         serviceMenu.SetActive(true);
+        Debug.Log("?");
         //TODO 服务初始化
     }
 
