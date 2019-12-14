@@ -103,10 +103,6 @@ public class GameManager : MonoBehaviour
                     od.Add(orderController.orderPool[5]);
                 break;
             case 4: od.Add(orderController.orderPool[6]);
-                    od.Add(orderController.orderPool[7]);
-                    od.Add(orderController.orderPool[8]);
-                break;
-            case 5: od.Add(orderController.orderPool[9]);
                 break;
         }
         return od.ToArray();
