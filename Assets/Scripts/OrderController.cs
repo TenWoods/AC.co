@@ -9,55 +9,42 @@ public class OrderController : MonoBehaviour
     public GameManager gameManager;
     public Dictionary<int,Order> orderPool = new Dictionary<int, Order>();
     public OrderMenuController orderMenuController;
-
-    // 可能留存一个上回合生成过的订单 ID
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int[] answer0 = {0,2,3};
+    public int[] answer1 = {1,2,3};
+    public int[] answer2 = {0,2,3};
+    public int[] answer3 = {1,2,3};
+    public int[] answer4 = {0,2,3};
 
     // 根据设置生成的订单
     public void InitOrders()
     {
-        //InitSimpleOrder(this,0,1,2,3,4,5);
-        //InitSimpleOrder(this,1,1,2,3,4,5);
-        //InitSimpleOrder(this,2,1,2,3,4,5);
-        
-        Order temp0 = new Order(this,0,1,2,3,4,5);
-        Order temp1 = new Order(this,1,1,2,3,4,5);
-        // Order temp2 = new Order(this,2,1,2,3,4,5);
-        // Order temp3 = new Order(this,3,1,2,3,4,5);
-        // Order temp4 = new Order(this,4,1,2,3,4,5);
-        // Order temp5 = new Order(this,5,1,2,3,4,5);
+        //Debug.Log("OrderController Init");
+        Order temp0 = new Order(this,0,1000,2,3,4,5,answer0,true);
+        Order temp1 = new Order(this,1,1000,2,3,4,5,answer1,false);
+        Order temp2 = new Order(this,2,1000,2,3,4,5,answer2,false);
+        Order temp3 = new Order(this,3,1000,2,3,4,5,answer3,false);
+        Order temp4 = new Order(this,4,1000,2,3,4,5,answer4,false);
+        Order temp5 = new Order(this,5,1,2,3,4,5,answer0,true);
+        Order temp6 = new Order(this,6,1,2,3,4,5,answer1,false);
+        Order temp7 = new Order(this,7,1,2,3,4,5,answer2,false);
+        Order temp8 = new Order(this,8,1,2,3,4,5,answer3,false);
+        Order temp9 = new Order(this,9,1,2,3,4,5,answer4,false);
+
 
         orderPool.Add(temp0.ID,temp0);
         orderPool.Add(temp1.ID,temp1);
-        // orderPool.Add(temp2.ID,temp2);
-        // orderPool.Add(temp3.ID,temp3);
-        // orderPool.Add(temp4.ID,temp4);
-        // orderPool.Add(temp5.ID,temp5);
-        //orderMenuController.allOrders.Add(new OrderViewer());
+        orderPool.Add(temp2.ID,temp2);
+        orderPool.Add(temp3.ID,temp3);
+        orderPool.Add(temp4.ID,temp4);
+        orderPool.Add(temp5.ID,temp5);
+        orderPool.Add(temp6.ID,temp6);
+        orderPool.Add(temp7.ID,temp7);
+        orderPool.Add(temp8.ID,temp8);
+        orderPool.Add(temp9.ID,temp9);
     }
 
-
-    public void InitSimpleOrder(OrderController _oc,
-                int id,int reward,int rewardTime,int orderMoney,int exp,float costModule,
-                bool hasOrderMoney = false,
-                bool isSpLabel = false,
-                bool isChecked = false)
-                {
-                    Order temp0 = new Order(_oc,id,reward,rewardTime,orderMoney,exp,costModule);
-                    orderPool.Add(temp0.ID,temp0);
-                }
-
     // 随机选取 count 个 Order，返回一个 Order 数组
-    public Order[] RandomOrders(int count)
+    /*public Order[] RandomOrders(int count)
     {
         List<Order> orders = new List<Order>();
 
@@ -84,6 +71,29 @@ public class OrderController : MonoBehaviour
             }
         }
         return orders.ToArray(); 
+    }*/
+
+    public Order[] PushActiveOrders()
+    {
+        List<Order> orders = new List<Order>();
+        for(int i = 0;i<orderPool.Count;i++)
+        {
+            orders.Add(orderPool[i]);
+        }
+        return orders.ToArray();
+        
+    }
+    /*public Order[] PushActiveOrders()
+    {
+        List<Order> orders = new List<Order>();
+
+        for(int i = 0;i<orderPool.Count;i++)
+        {
+            if(orderPool[i].IsActive)
+                orders.Add(orderPool[i]);
+        }
+        Debug.Log(orders.ToArray().Length);
+        return orders.ToArray();
     }
 
     public void SetOrderActive(int id)
@@ -95,10 +105,11 @@ public class OrderController : MonoBehaviour
     {
         orderPool[id].IsActive = false;
     }
-    public int CheckActiveOrder()
+
+    /* public int CheckActiveOrder()
     {
         int count = 0;
-        for(int i = 0;i<orderPool.Count;i++)
+       for(int i = 0;i<orderPool.Count;i++)
         {
             if(orderPool[i].IsActive)
                 count++;
@@ -126,5 +137,5 @@ public class OrderController : MonoBehaviour
         od.IsActive =  target.IsActive;
 
         return od;
-    }
+    }*/
 }

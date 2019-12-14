@@ -12,29 +12,21 @@ public class Order
     public int Exp {get;set;}                       // 经验值
 
     public int NextOrderID;
-    public Service[] demands;                       // 要求（存疑，或许要建一个 Demand 新类）
-    public enum demand                              // 根据要求枚举去生成相应的服务
-    {
-        human,
-        cyberhuman,
-        animal,
-        item,
-        vip,
-    }
-    
+    public int[] Demands;                           // 要求,用来存正确答案
 
-    public float CostModule {get;set;}            // 成本系数
-    public string[] Report{get;set;}             // 订单完成报告
+    public float CostModule {get;set;}              // 成本系数
+    public string[] Report{get;set;}                // 订单完成报告
 
     // 默认数值
-    public float CompleteDegree {get;set;}        // 订单完成度
-    public bool IsSpLabel = false;                // 特殊订单标签
-    public bool IsChecked {get;set;}              // 订单是否完成（完成/超时）？？？
+    public float CompleteDegree {get;set;}          // 订单完成度
+    public bool IsSpLabel = false;                  // 特殊订单标签
+    public bool IsChecked {get;set;}                // 订单是否完成（完成/超时）
     public bool IsActive {get;set;}
 
     public Order(OrderController _oc,
                 int id,int reward,int rewardTime,int orderMoney,int exp,float costModule,
-                bool isActive = true,
+                int[] demands,
+                bool isActive = false,
                 int nextOrderId = -1,
                 bool isSpLabel = false,
                 bool isChecked = false)
@@ -47,19 +39,19 @@ public class Order
         OrderMoney = orderMoney;
         Exp = exp;
         CostModule = costModule;
-
+        Demands = demands;
         CompleteDegree = 0;
-
+        NextOrderID = nextOrderId;
         IsSpLabel = false;
         IsChecked = false;
-        IsActive =  true;
+        IsActive =  isActive;
 
 
     }
 
-    public void SetNextOrderActive()
-    {
-        oc.SetOrderActive(NextOrderID);
-    }
+    //public void SetNextOrderActive()
+    //{
+    //    oc.SetOrderActive(NextOrderID);
+    //}
 
 }
