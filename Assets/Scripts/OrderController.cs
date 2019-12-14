@@ -8,6 +8,7 @@ public class OrderController : MonoBehaviour
 {
     public GameManager gameManager;
     public Dictionary<int,Order> orderPool;
+    public OrderMenuController orderMenuController;
 
     // 可能留存一个上回合生成过的订单 ID
     // Start is called before the first frame update
@@ -27,6 +28,8 @@ public class OrderController : MonoBehaviour
         InitSimpleOrder(this,0,1,2,3,4,5);
         InitSimpleOrder(this,1,1,2,3,4,5);
         InitSimpleOrder(this,2,1,2,3,4,5);
+        
+        orderMenuController.allOrders.Add(new OrderViewer());
     }
 
 
@@ -40,6 +43,7 @@ public class OrderController : MonoBehaviour
                     orderPool.Add(temp0.ID,temp0);
                 }
 
+    // 随机选取 count 个 Order，返回一个 Order 数组
     public Order[] RandomOrders(int count)
     {
         List<Order> orders = new List<Order>();
