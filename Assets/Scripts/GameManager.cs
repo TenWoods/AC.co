@@ -50,12 +50,8 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         orderController.InitOrders();
-        int[] exam = {1};
-        //CheckAnswer(0,exam);
-        //Order[] roll = orderController.RandomOrders(2);
         Order[] roll = PushOrder(round);
         orderMenuController.InitOrders(roll);
-//        Debug.Log(roll.Length);
         weekCount.text = round.ToString();
         fundUI.text = playerFund.ToString();
     }
