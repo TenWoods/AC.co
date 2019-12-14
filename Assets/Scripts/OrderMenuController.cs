@@ -56,6 +56,7 @@ public class OrderMenuController : MonoBehaviour
         allOrders.Clear();
         foreach(var i in orders)
         {
+            Debug.Log(i.ID);
             GameObject temp = GameObject.Instantiate(orderPrefabs[i.ID]);
             temp.GetComponent<RectTransform>().SetParent(orderMenu.transform);
             int count = temp.transform.parent.childCount;

@@ -9,6 +9,10 @@ public class ServiceMenuController : MonoBehaviour
     public GameObject humanGear;
     public GameObject animal;
     public GameObject item;
+    public GameObject humanButton;
+    public GameObject humanGearButton;
+    public GameObject animalButton;
+    public GameObject itemButton;
     public Text humanText;
     public Text humanGearText;
     public Text animalText;
@@ -321,7 +325,91 @@ public class ServiceMenuController : MonoBehaviour
                 currentText = texts[7];
             }
             break;
-
+            //订单3
+            case 3 :
+            if (currentSave.Contains(9) && currentSave.Count == 1)
+            {
+                texts[8].SetActive(true);
+                currentText = texts[8];
+            }
+            if (currentSave.Contains(9) && currentSave.Contains(10))
+            {
+                texts[9].SetActive(true);
+                currentText = texts[9];
+            }
+            if (currentSave.Contains(7) && currentSave.Count == 1)
+            {
+                texts[10].SetActive(true);
+                currentText = texts[10];
+            }
+            if (currentSave.Contains(7) && currentSave.Contains(8))
+            {
+                texts[11].SetActive(true);
+                currentText = texts[11];
+            }
+            if (currentSave.Contains(1) && currentSave.Count == 1)
+            {
+                texts[12].SetActive(true);
+                currentText = texts[12];
+            }
+            if (currentSave.Contains(1) && currentSave.Contains(2) && currentSave.Count == 2)
+            {
+                texts[13].SetActive(true);
+                currentText = texts[13];
+            }
+            if (currentSave.Contains(1) && currentSave.Contains(3) && currentSave.Count == 2)
+            {
+                texts[14].SetActive(true);
+                currentText = texts[14];
+            }
+            if (currentSave.Contains(1) && currentSave.Contains(2) && currentSave.Contains(3))
+            {
+                texts[15].SetActive(true);
+                currentText = texts[15];
+            }
+            if (currentSave.Contains(4))
+            {
+                texts[16].SetActive(true);
+                currentText = texts[16];
+            }
+            break;
+            //订单4
+            case 4 :
+            if (currentSave.Contains(1) && currentSave.Contains(3) && currentSave.Count == 2)
+            {
+                texts[17].SetActive(true);
+                currentText = texts[17];
+            }
+            break;
+            //订单5
+            case 5 :
+            if (currentSave.Contains(1) && currentSave.Count == 1)
+            {
+                texts[18].SetActive(true);
+                currentText = texts[18];
+                break;
+            }
+            if (currentSave.Contains(4) && currentSave.Count == 1)
+            {
+                texts[19].SetActive(true);
+                currentText = texts[19];
+                break;
+            }
+            if (currentSave.Count <= 0)
+            {
+                break;
+            }
+            texts[20].SetActive(true);
+            currentText = texts[20];
+            break;
+            //订单6
+            case 6 :
+            if (currentSave.Contains(4) && currentSave.Count == 1)
+            {
+                texts[21].SetActive(true);
+                currentText = texts[21];
+            }
+            break;
         }
     }
 
@@ -338,7 +426,7 @@ public class ServiceMenuController : MonoBehaviour
             human.SetActive(false);
             humanText.text = "派遣员";
             humanOn = false;
-            if (gameManager.round >= 3)
+            if (gameManager.round >= 3 && currentViewer.m_order.ID != 4)
             {
                 humanUpdate_1.SetActive(false);
                 humanToggle_1.isOn = false;
@@ -354,7 +442,7 @@ public class ServiceMenuController : MonoBehaviour
             human.SetActive(true);
             humanText.text = "派遣员√";
             humanOn = true;
-            if (gameManager.round >= 3)
+            if (gameManager.round >= 3 && currentViewer.m_order.ID != 4)
             {
                 humanUpdate_1.SetActive(true);
             }
@@ -377,12 +465,12 @@ public class ServiceMenuController : MonoBehaviour
             humanGear.SetActive(false);
             humanGearText.text = "安可";
             humanGearOn = false;
-            if (gameManager.round >= 3)
+            if (gameManager.round >= 3 && currentViewer.m_order.ID != 6)
             {
                 humanGearUpdate_1.SetActive(false);
                 humanGearToggle_1.isOn = false;
             }
-            if (gameManager.round >= 3)
+            if (gameManager.round >= 3 && currentViewer.m_order.ID != 6)
             {
                 humanGearUpdate_2.SetActive(false);
                 humanGearToggle_2.isOn = false;
@@ -393,11 +481,11 @@ public class ServiceMenuController : MonoBehaviour
             humanGear.SetActive(true);
             humanGearText.text = "安可√";
             humanGearOn = true;
-            if (gameManager.round >= 3)
+            if (gameManager.round >= 3 && currentViewer.m_order.ID != 6)
             {
                 humanGearUpdate_1.SetActive(true);
             }
-            if (gameManager.round >= 3)
+            if (gameManager.round >= 3 && currentViewer.m_order.ID != 6)
             {
                 humanGearUpdate_2.SetActive(true);
             }
@@ -468,6 +556,19 @@ public class ServiceMenuController : MonoBehaviour
         serviceMenu.SetActive(true);
         //TODO 服务初始化
         currentViewer = gameObject.GetComponent<OrderMenuController>().currentViewer;
+        Debug.Log(currentViewer.m_order.ID);
+        if (currentViewer.m_order.ID == 4)
+        {
+            humanGearButton.SetActive(false);
+            animalButton.SetActive(false);
+            itemButton.SetActive(false);
+        }
+        if (currentViewer.m_order.ID == 6)
+        {
+            humanButton.SetActive(false);
+            animalButton.SetActive(false);
+            itemButton.SetActive(false);
+        }
     }
 
     public void Off()
@@ -511,6 +612,12 @@ public class ServiceMenuController : MonoBehaviour
         currentSave.Sort();
         //Debug.Log(currentViewer.m_order.ID);
         AddChoice(currentViewer.m_order.ID);
+        if (currentViewer.m_order.ID == 4)
+        {
+            humanGearButton.SetActive(true);
+            animalButton.SetActive(true);
+            itemButton.SetActive(true);
+        }
         OrderViewer temp = gameObject.GetComponent<OrderMenuController>().currentViewer;
         if (temp != null)
         {
