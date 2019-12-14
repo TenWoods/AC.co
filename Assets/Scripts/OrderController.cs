@@ -24,6 +24,7 @@ public class OrderController : MonoBehaviour
     // 根据设置生成的订单
     public Order[] InitOrders()
     {
+
         Order[] orders = new Order[1];
         // ID,Reward,RewardTime,OrderMoney,ConceptModule,CompleteDegree,CostModule,Name
         orders[0] = new Order(0,1,2,3,4,5);
@@ -43,6 +44,7 @@ public class OrderController : MonoBehaviour
         //orders[14] = new Order(2,1,2,3,4,5);
         //orders[15] = new Order(3,1,2,3,4,5);
         //orders[16] = new Order(4,1,2,3,4,5);
+
         return orders;
     }
 
