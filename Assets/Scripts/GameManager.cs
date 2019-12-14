@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public int round = 1;
     public int orderCount = 0;
     public OrderController orderController;
-
+    public TalkController talkController;
     public OrderMenuController orderMenuController;
     //玩家属性显示UI
     public Text weekCount;
@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Init();
+        talkController.PushPanel(0);
+
     }
 
     private void Update()
@@ -61,6 +63,10 @@ public class GameManager : MonoBehaviour
     //下一回合按钮
     public void NextRound()
     {
+        if(round == 1)
+        {
+            talkController.PushPanel(6);
+        }
         round++;
         Debug.Log(round);
         calcStart = true;
@@ -72,6 +78,7 @@ public class GameManager : MonoBehaviour
             humanGear.SetActive(true);
             animal.SetActive(true);
         }
+        
     }
 
     //回合结算确定按钮

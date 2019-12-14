@@ -26,6 +26,7 @@ public class ServiceMenuController : MonoBehaviour
 
     #region UI组件相关
     public GameManager gameManager;
+    public TalkController talkController;
     public GameObject humanUpdate_1;
     public GameObject humanUpdate_2;
     public Toggle humanToggle_1;
@@ -517,6 +518,12 @@ public class ServiceMenuController : MonoBehaviour
             Destroy(temp.gameObject);
         }
         gameObject.GetComponent<OrderMenuController>().On();
+
+        if(gameManager.round == 1)
+        {
+            talkController.PushPanel(5);
+        }
+        
         Off();
     }
 
