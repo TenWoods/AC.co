@@ -12,14 +12,14 @@ public class TextController : MonoBehaviour
     private bool isDark = true;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         white = desktop.color;
         dark = new Color(white.r, white.g, white.b, 0.0f);
         desktop.color = dark;
     }
 
-    void Update()
+    private void Update()
     {
         if (isDark)
         {

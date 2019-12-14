@@ -23,7 +23,8 @@ public class OrderController : MonoBehaviour
         Order[] orders = new Order[num];
         for(int i = 0;i < num;i++)
         {
-            // TODO
+            Random random = new Random();
+            float rand = Random.Range(0.0f, 1.0f);
             orders[i] = new Order();
         }
         return orders;
