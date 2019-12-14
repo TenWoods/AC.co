@@ -9,6 +9,7 @@ public class OrderMenuController : MonoBehaviour
     public GameObject onSwitch;
     private int orderNum = 10;
     public List<OrderViewer> allOrders;
+    public List<GameObject> orderPrefabs;
     public OrderViewer currentViewer = null;
 
     private void Update()
@@ -46,8 +47,19 @@ public class OrderMenuController : MonoBehaviour
         onSwitch.SetActive(true);
     }
 
-    public void UpdateOrderNum(int num)
+    public void InitOrders(Order[] orders)
     {
-        orderNum = num;
+        allOrders.Clear();
+        foreach(var i in orders)
+        {
+            GameObject temp = GameObject.Instantiate(orderPrefabs[i.ID]);
+            temp.GetComponent<RectTransform>().SetParent(orderMenu.transform);
+            temp.GetComponent<OrderViewer>().m_order = i;
+            allOrders.Add(temp.GetComponent<OrderViewer>());
+        }
+        foreach(var i in allOrders)
+        {
+            i.Print();
+        }
     }
 }

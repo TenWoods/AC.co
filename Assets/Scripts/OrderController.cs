@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class OrderController : MonoBehaviour
 {
     public GameManager gameManager;
-    public Dictionary<int,Order> orderPool;
+    public Dictionary<int,Order> orderPool = new Dictionary<int, Order>();
     public OrderMenuController orderMenuController;
 
     // 可能留存一个上回合生成过的订单 ID
@@ -25,11 +25,24 @@ public class OrderController : MonoBehaviour
     // 根据设置生成的订单
     public void InitOrders()
     {
-        InitSimpleOrder(this,0,1,2,3,4,5);
-        InitSimpleOrder(this,1,1,2,3,4,5);
-        InitSimpleOrder(this,2,1,2,3,4,5);
+        //InitSimpleOrder(this,0,1,2,3,4,5);
+        //InitSimpleOrder(this,1,1,2,3,4,5);
+        //InitSimpleOrder(this,2,1,2,3,4,5);
         
-        orderMenuController.allOrders.Add(new OrderViewer());
+        Order temp0 = new Order(this,0,1,2,3,4,5);
+        Order temp1 = new Order(this,1,1,2,3,4,5);
+        // Order temp2 = new Order(this,2,1,2,3,4,5);
+        // Order temp3 = new Order(this,3,1,2,3,4,5);
+        // Order temp4 = new Order(this,4,1,2,3,4,5);
+        // Order temp5 = new Order(this,5,1,2,3,4,5);
+
+        orderPool.Add(temp0.ID,temp0);
+        orderPool.Add(temp1.ID,temp1);
+        // orderPool.Add(temp2.ID,temp2);
+        // orderPool.Add(temp3.ID,temp3);
+        // orderPool.Add(temp4.ID,temp4);
+        // orderPool.Add(temp5.ID,temp5);
+        //orderMenuController.allOrders.Add(new OrderViewer());
     }
 
 

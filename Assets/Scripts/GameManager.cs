@@ -13,11 +13,10 @@ public class GameManager : MonoBehaviour
     private int playerLevel;
 
     private int round = 0;
-    [SerializeField]
-   
     public OrderController orderController;
-    public int orderNumMax;
-    private int orderNumCurrent;
+    // public int orderNumMax;
+    // private int orderNumCurrent;
+    public OrderMenuController orderMenuController;
 
     private bool calcStart = false;
     private bool initNextRound = false;
@@ -46,7 +45,13 @@ public class GameManager : MonoBehaviour
     //游戏初始化
     private void Init()
     {
-        
+        orderController.InitOrders();
+        Order[] roll = orderController.RandomOrders(3);
+        foreach(var i in roll)
+        {
+            Debug.Log(i.ID);
+        }
+        orderMenuController.InitOrders(roll);
     }
 
     

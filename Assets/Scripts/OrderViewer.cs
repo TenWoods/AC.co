@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class OrderViewer : MonoBehaviour
 {
-    private Order m_order;
+    public Order m_order;
     public Button m_button;
     public GameObject m_menu;
 
@@ -34,5 +34,11 @@ public class OrderViewer : MonoBehaviour
     public void Off()
     {
         m_menu.SetActive(false);
+    }
+
+    public void Print()
+    {
+        Debug.Log(m_order.ID);
+        Debug.Log("???");
     }
 }
