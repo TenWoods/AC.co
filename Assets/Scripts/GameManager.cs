@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
     {
         Init();
         talkController.PushPanel(0);
-
     }
 
     private void Update()
