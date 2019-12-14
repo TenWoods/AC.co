@@ -46,6 +46,7 @@ public class ServiceMenuController : MonoBehaviour
 
     private void AddChoice(int i)
     {
+
         List<int> temp = new List<int>(currentSave);
         if (!choiceSaves.ContainsKey(i))
         {
@@ -416,17 +417,17 @@ public class ServiceMenuController : MonoBehaviour
         currentSave.Clear();
     }
 
-    public void SendChooseResult()
+    public void SaveChooseResult()
     {
-        currentSave.Sort();
-        AddChoice(currentViewer.m_order.ID);
-        for (int i = 0; i < choiceSaves.Count; i++)
+        if (currentSave.Count <= 0)
         {
-            foreach (var j in choiceSaves[i])
-            {
-                Debug.Log(j);
-            }
+            gameObject.GetComponent<OrderMenuController>().On();
+            Off();
+            return;
         }
+        currentSave.Sort();
+        Debug.Log(currentViewer.m_order.ID);
+        AddChoice(currentViewer.m_order.ID);
         OrderViewer temp = gameObject.GetComponent<OrderMenuController>().currentViewer;
         if (temp != null)
         {
@@ -435,5 +436,10 @@ public class ServiceMenuController : MonoBehaviour
         }
         gameObject.GetComponent<OrderMenuController>().On();
         Off();
+    }
+
+    public void SendChoiceResult()
+    {
+        GameObject.Find("GameManager").GetComponent<GameManager>().dic = new Dictionary<int, List<int>>(choiceSaves);
     }
 }

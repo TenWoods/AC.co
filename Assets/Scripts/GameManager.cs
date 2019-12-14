@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private bool calcStart = false;
     private bool initNextRound = false;
 
-    public Dictionary<int,List<Order>> dic;
+    public Dictionary<int,List<int>> dic;
 
     private void Start()
     {
