@@ -24,7 +24,7 @@ public class TextController : MonoBehaviour
         if (isDark)
         {
             desktop.color = Color.Lerp(desktop.color, white, Time.deltaTime * changeFrequence);
-            if (desktop.color.a >= (white.a - 0.05f))
+            if (desktop.color.a >= (white.a - 0.005f))
             {
                 desktop.color = white;
                 isDark = false;
@@ -33,7 +33,7 @@ public class TextController : MonoBehaviour
         else
         {
             desktop.color = Color.Lerp(desktop.color, dark, Time.deltaTime * changeFrequence);
-            if (desktop.color.a <= 0.05f)
+            if (desktop.color.a <= 0.005f)
             {
                 desktop.color = dark;
                 isDark = true;

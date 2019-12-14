@@ -18,6 +18,8 @@ public class ServiceMenuController : MonoBehaviour
     private bool animalOn = false;
     private bool itemOn = false;
     public GameObject serviceMenu;
+    public Toggle toggle;
+
 
     #region 下层菜单开关
     public void HumanFold()
@@ -29,13 +31,13 @@ public class ServiceMenuController : MonoBehaviour
         if (humanOn)
         {
             human.SetActive(false);
-            humanText.text = "人类<-";
+            humanText.text = "人类";
             humanOn = false;
         }
         else
         {
             human.SetActive(true);
-            humanText.text = "人类>-";
+            humanText.text = "人类√";
             humanOn = true;
         }
     }
@@ -49,13 +51,13 @@ public class ServiceMenuController : MonoBehaviour
         if (humanGearOn)
         {
             humanGear.SetActive(false);
-            humanGearText.text = "仿生人❤<-";
+            humanGearText.text = "仿生人";
             humanGearOn = false;
         }
         else
         {
             humanGear.SetActive(true);
-            humanGearText.text = "仿生人❤>-";
+            humanGearText.text = "仿生人√";
             humanGearOn = true;
         }
     }
@@ -69,13 +71,13 @@ public class ServiceMenuController : MonoBehaviour
         if (animalOn)
         {
             animal.SetActive(false);
-            animalText.text = "动物<-";
+            animalText.text = "动物";
             animalOn = false;
         }
         else
         {
             animal.SetActive(true);
-            animalText.text = "动物>-";
+            animalText.text = "动物√";
             animalOn = true;
         }
     }
@@ -89,18 +91,17 @@ public class ServiceMenuController : MonoBehaviour
         if (itemOn)
         {
             item.SetActive(false);
-            itemText.text = "物品<-";
+            itemText.text = "物品";
             itemOn = false;
         }
         else
         {
             item.SetActive(true);
-            itemText.text = "物品>-";
+            itemText.text = "物品√";
             itemOn = true;
         }
     }
     #endregion
-
     public void On()
     {
         serviceMenu.SetActive(true);
