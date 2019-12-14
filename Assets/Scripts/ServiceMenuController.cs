@@ -13,15 +13,228 @@ public class ServiceMenuController : MonoBehaviour
     public Text humanGearText;
     public Text animalText;
     public Text itemText;
+
     private bool humanOn = false;
     private bool humanGearOn = false;
     private bool animalOn = false;
     private bool itemOn = false;
     public GameObject serviceMenu;
+    private List<int> chooseSave = new List<int>();
+
+    #region UI组件相关
     public GameManager gameManager;
+    public GameObject humanUpdate_1;
+    public GameObject humanUpdate_2;
+    public Toggle humanToggle_1;
+    public Toggle humanToggle_2;
+    public GameObject humanGearUpdate_1;
+    public GameObject humanGearUpdate_2;
+    public Toggle humanGearToggle_1;
+    public Toggle humanGearToggle_2;
+    public GameObject animalUpdate;
+    public Toggle animalToggle;
+    public GameObject itemUpdate;
+    public Toggle itemToggle;
+    #endregion
 
+    public Text costUI;
+    private int costSave = 0;
 
-    #region 下层菜单开关
+    #region  开销记录
+    public void HumanBase(int n)
+    {
+        if (humanGearOn || animalOn || itemOn)
+        {
+            return;
+        }
+        if (humanOn)
+        {
+            costSave += n;
+            chooseSave.Add(1);
+        }
+        else
+        {
+            costSave -= n;
+            chooseSave.Remove(1);
+        }
+        costUI.text = costSave.ToString();
+    }
+
+    public void HumanUpdate1(int n)
+    {
+        if (humanGearOn || animalOn || itemOn)
+        {
+            return;
+        }
+        if (humanToggle_1.isOn)
+        {
+            costSave += n;
+            chooseSave.Add(2);
+        }
+        else
+        {
+            costSave -= n;
+            chooseSave.Remove(2);
+        }
+        costUI.text = costSave.ToString();
+    }
+
+    public void HumanUpdate2(int n)
+    {
+        if (humanGearOn || animalOn || itemOn)
+        {
+            return;
+        }
+        if (humanToggle_2.isOn)
+        {
+            costSave += n;
+            chooseSave.Add(3);
+        }
+        else
+        {
+            costSave -= n;
+            chooseSave.Remove(3);
+        }
+        costUI.text = costSave.ToString();
+    }
+
+    public void HumanGearBase(int n)
+    {
+        if (humanOn|| animalOn || itemOn)
+        {
+            return;
+        }
+        if (humanGearOn)
+        {
+            costSave += n;
+            chooseSave.Add(4);
+        }
+        else
+        {
+            costSave -= n;
+            chooseSave.Remove(4);
+        }
+        costUI.text = costSave.ToString();
+    }
+
+    public void HumanGearUpdate1(int n)
+    {
+        if (humanOn|| animalOn || itemOn)
+        {
+            return;
+        }
+        if (humanGearToggle_1.isOn)
+        {
+            costSave += n;
+            chooseSave.Add(5);
+        }
+        else
+        {
+            costSave -= n;
+            chooseSave.Remove(5);
+        }
+        costUI.text = costSave.ToString();
+    }
+
+    public void HumanGearUpdate2(int n)
+    {
+        if (humanOn|| animalOn || itemOn)
+        {
+            return;
+        }
+        if (humanGearToggle_2.isOn)
+        {
+            costSave += n;
+            chooseSave.Add(6);
+        }
+        else
+        {
+            costSave -= n;
+            chooseSave.Remove(6);
+        }
+        costUI.text = costSave.ToString();
+    }
+
+    public void AnimalBase(int n)
+    {
+        if (humanOn|| humanGearOn || itemOn)
+        {
+            return;
+        }
+        if (animalOn)
+        {
+            costSave += n;
+            chooseSave.Add(7);
+        }
+        else
+        {
+            costSave -= n;
+            chooseSave.Remove(7);
+        }
+        costUI.text = costSave.ToString();
+    }
+
+    public void AnimalUpdateSave(int n)
+    {
+        if (humanOn|| humanGearOn || itemOn)
+        {
+            return;
+        }
+        if (animalToggle.isOn)
+        {
+            costSave += n;
+            chooseSave.Add(8);
+        }
+        else
+        {
+            costSave -= n;
+            chooseSave.Remove(8);
+        }
+        costUI.text = costSave.ToString();
+    }
+
+    public void ItemBase(int n)
+    {
+        if (humanOn|| humanGearOn || animalOn)
+        {
+            return;
+        }
+        if (itemOn)
+        {
+            costSave += n;
+            chooseSave.Add(9);
+        }
+        else
+        {
+            costSave -= n;
+            chooseSave.Remove(9);
+        }
+        costUI.text = costSave.ToString();
+    }
+
+    public void ItemUpdateSave(int n)
+    {
+        if (humanOn|| humanGearOn || animalOn)
+        {
+            return;
+        }
+        if (itemToggle.isOn)
+        {
+            costSave += n;
+            chooseSave.Add(10);
+        }
+        else
+        {
+            costSave -= n;
+            chooseSave.Remove(10);
+        }
+        costUI.text = costSave.ToString();
+    }
+
+    #endregion
+
+    #region 开关
+    //人类
     public void HumanFold()
     {
         if (humanGearOn || animalOn || itemOn)
@@ -33,15 +246,34 @@ public class ServiceMenuController : MonoBehaviour
             human.SetActive(false);
             humanText.text = "人类";
             humanOn = false;
+            if (gameManager.round >= 2)
+            {
+                humanUpdate_1.SetActive(false);
+                humanToggle_1.isOn = false;
+            }
+            if (gameManager.round >= 3)
+            {
+                humanUpdate_2.SetActive(false);
+                humanToggle_2.isOn = false;
+            }
         }
         else
         {
             human.SetActive(true);
             humanText.text = "人类√";
             humanOn = true;
+            if (gameManager.round >= 2)
+            {
+                humanUpdate_1.SetActive(true);
+            }
+            if (gameManager.round >= 3)
+            {
+                humanUpdate_2.SetActive(true);
+            }
         }
     }
 
+    //仿生人
     public void HumanGearFold()
     {
         if (humanOn || animalOn || itemOn)
@@ -53,12 +285,30 @@ public class ServiceMenuController : MonoBehaviour
             humanGear.SetActive(false);
             humanGearText.text = "仿生人";
             humanGearOn = false;
+            if (gameManager.round >= 2)
+            {
+                humanGearUpdate_1.SetActive(false);
+                humanGearToggle_1.isOn = false;
+            }
+            if (gameManager.round >= 3)
+            {
+                humanGearUpdate_2.SetActive(false);
+                humanGearToggle_2.isOn = false;
+            }
         }
         else
         {
             humanGear.SetActive(true);
             humanGearText.text = "仿生人√";
             humanGearOn = true;
+            if (gameManager.round >= 2)
+            {
+                humanGearUpdate_1.SetActive(true);
+            }
+            if (gameManager.round >= 3)
+            {
+                humanGearUpdate_2.SetActive(true);
+            }
         }
     }
 
@@ -73,12 +323,21 @@ public class ServiceMenuController : MonoBehaviour
             animal.SetActive(false);
             animalText.text = "动物";
             animalOn = false;
+            if (gameManager.round >= 2)
+            {
+                animalUpdate.SetActive(false);
+            }
+            animalToggle.isOn = false;
         }
         else
         {
             animal.SetActive(true);
             animalText.text = "动物√";
             animalOn = true;
+            if (gameManager.round >= 2)
+            {
+                animalUpdate.SetActive(true);
+            }
         }
     }
 
@@ -93,24 +352,71 @@ public class ServiceMenuController : MonoBehaviour
             item.SetActive(false);
             itemText.text = "物品";
             itemOn = false;
+            if (gameManager.round >= 2)
+            {
+                itemUpdate.SetActive(false);
+            }
+            itemToggle.isOn = false;
         }
         else
         {
             item.SetActive(true);
             itemText.text = "物品√";
             itemOn = true;
+            if (gameManager.round >= 2)
+            {
+                itemUpdate.SetActive(true);
+            }
         }
     }
     #endregion
+    
     public void On()
     {
         serviceMenu.SetActive(true);
-        Debug.Log("?");
         //TODO 服务初始化
     }
 
     public void Off()
     {
         serviceMenu.SetActive(false);
+        //还原属性
+        if (humanOn)
+        {
+            HumanFold();
+        }
+        if (humanGearOn)
+        {
+            HumanGearFold();
+        }
+        if (animalOn)
+        {
+            AnimalFold();
+        }
+        if (itemOn)
+        {
+            ItemFold();
+        }
+        costSave = 0;
+        costUI.text = costSave.ToString();
+        chooseSave.Clear();
+    }
+
+    public void SendChooseResult()
+    {
+        chooseSave.Sort();
+        foreach(var i in chooseSave)
+        {
+            Debug.Log(i);
+        }
+        OrderViewer temp = gameObject.GetComponent<OrderMenuController>().currentViewer;
+        if (temp != null)
+        {
+            Debug.Log("?");
+            gameObject.GetComponent<OrderMenuController>().allOrders.Remove(temp);
+            Destroy(temp.gameObject);
+        }
+        gameObject.GetComponent<OrderMenuController>().On();
+        Off();
     }
 }
