@@ -57,6 +57,9 @@ public class Order
 
     }
 
-
+    public void SetNextOrderActive()
+    {
+        oc.SetOrderActive(NextOrderID);
+    }
 
 }

@@ -86,6 +86,15 @@ public class OrderController : MonoBehaviour
         return orders.ToArray(); 
     }
 
+    public void SetOrderActive(int id)
+    {
+        orderPool[id].IsActive = true;
+    }
+
+    public void SetOrderDisActive(int id)
+    {
+        orderPool[id].IsActive = false;
+    }
     public int CheckActiveOrder()
     {
         int count = 0;
