@@ -49,13 +49,13 @@ public class ServiceMenuController : MonoBehaviour
         if (humanGearOn)
         {
             humanGear.SetActive(false);
-            humanGearText.text = "仿生人修吉<-";
+            humanGearText.text = "仿生人❤<-";
             humanGearOn = false;
         }
         else
         {
             humanGear.SetActive(true);
-            humanGearText.text = "仿生人修吉>-";
+            humanGearText.text = "仿生人❤>-";
             humanGearOn = true;
         }
     }
@@ -69,13 +69,13 @@ public class ServiceMenuController : MonoBehaviour
         if (animalOn)
         {
             animal.SetActive(false);
-            animalText.text = "仿生人<-";
+            animalText.text = "动物<-";
             animalOn = false;
         }
         else
         {
             animal.SetActive(true);
-            animalText.text = "仿生人>-";
+            animalText.text = "动物>-";
             animalOn = true;
         }
     }

@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5800024404079377481
 RectTransform:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -516.5501, y: 458.05}
+  m_AnchoredPosition: {x: -516, y: 458}
   m_SizeDelta: {x: 277.6, y: 98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5800024404212725197
@@ -540,7 +540,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5800024404567506139}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: On
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5800024404583624094
 GameObject:
   m_ObjectHideFlags: 0
