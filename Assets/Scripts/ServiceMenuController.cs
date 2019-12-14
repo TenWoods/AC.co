@@ -18,7 +18,7 @@ public class ServiceMenuController : MonoBehaviour
     private bool animalOn = false;
     private bool itemOn = false;
     public GameObject serviceMenu;
-    public Toggle toggle;
+    public GameManager gameManager;
 
 
     #region 下层菜单开关

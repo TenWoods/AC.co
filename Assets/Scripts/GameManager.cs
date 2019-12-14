@@ -7,12 +7,7 @@ public class GameManager : MonoBehaviour
 {
     //玩家资金
     private int playerFund = 1000;
-    //经验
-    private int exp = 0;
-    //玩家等级
-    private int playerLevel = 1;
-
-    private int round = 1;
+    public int round = 1;
     public OrderController orderController;
     // public int orderNumMax;
     // private int orderNumCurrent;
