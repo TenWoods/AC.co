@@ -36,8 +36,9 @@ public class GameManager : MonoBehaviour
         }
         if (initNextRound)
         {
-            int orderNum = orderNumMax - orderNumCurrent;
-            orderController.InitOrders(orderNum);
+            //int orderNum = orderNumMax - orderNumCurrent;
+            //orderController.InitOrders();
+            //TODO 准备下个回合
             initNextRound = false;
         }
     }
