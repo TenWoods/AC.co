@@ -19,7 +19,9 @@ public class ServiceMenuController : MonoBehaviour
     private bool animalOn = false;
     private bool itemOn = false;
     public GameObject serviceMenu;
-    private List<int> chooseSave = new List<int>();
+    private Dictionary<int , List<int>> choiceSaves = new Dictionary<int , List<int>>();
+    private List<int> currentSave = new List<int>();
+    private OrderViewer currentViewer;
 
     #region UI组件相关
     public GameManager gameManager;
@@ -41,6 +43,17 @@ public class ServiceMenuController : MonoBehaviour
     private int costSave = 0;
 
     #region  开销记录
+
+    private void AddChoice(int i)
+    {
+        List<int> temp = new List<int>(currentSave);
+        if (!choiceSaves.ContainsKey(i))
+        {
+            choiceSaves.Add(i, temp);
+        }
+        choiceSaves[i] = temp;
+    }
+
     public void HumanBase(int n)
     {
         if (humanGearOn || animalOn || itemOn)
@@ -50,12 +63,12 @@ public class ServiceMenuController : MonoBehaviour
         if (humanOn)
         {
             costSave += n;
-            chooseSave.Add(1);
+            currentSave.Add(1);
         }
         else
         {
             costSave -= n;
-            chooseSave.Remove(1);
+            currentSave.Remove(1);
         }
         costUI.text = costSave.ToString();
     }
@@ -69,12 +82,12 @@ public class ServiceMenuController : MonoBehaviour
         if (humanToggle_1.isOn)
         {
             costSave += n;
-            chooseSave.Add(2);
+            currentSave.Add(2);
         }
         else
         {
             costSave -= n;
-            chooseSave.Remove(2);
+            currentSave.Remove(2);
         }
         costUI.text = costSave.ToString();
     }
@@ -88,12 +101,12 @@ public class ServiceMenuController : MonoBehaviour
         if (humanToggle_2.isOn)
         {
             costSave += n;
-            chooseSave.Add(3);
+            currentSave.Add(3);
         }
         else
         {
             costSave -= n;
-            chooseSave.Remove(3);
+            currentSave.Remove(3);
         }
         costUI.text = costSave.ToString();
     }
@@ -107,12 +120,12 @@ public class ServiceMenuController : MonoBehaviour
         if (humanGearOn)
         {
             costSave += n;
-            chooseSave.Add(4);
+           currentSave.Add(4);
         }
         else
         {
             costSave -= n;
-            chooseSave.Remove(4);
+            currentSave.Remove(4);
         }
         costUI.text = costSave.ToString();
     }
@@ -126,12 +139,12 @@ public class ServiceMenuController : MonoBehaviour
         if (humanGearToggle_1.isOn)
         {
             costSave += n;
-            chooseSave.Add(5);
+            currentSave.Add(5);
         }
         else
         {
             costSave -= n;
-            chooseSave.Remove(5);
+            currentSave.Remove(5);
         }
         costUI.text = costSave.ToString();
     }
@@ -145,12 +158,12 @@ public class ServiceMenuController : MonoBehaviour
         if (humanGearToggle_2.isOn)
         {
             costSave += n;
-            chooseSave.Add(6);
+            currentSave.Add(6);
         }
         else
         {
             costSave -= n;
-            chooseSave.Remove(6);
+            currentSave.Remove(6);
         }
         costUI.text = costSave.ToString();
     }
@@ -164,12 +177,12 @@ public class ServiceMenuController : MonoBehaviour
         if (animalOn)
         {
             costSave += n;
-            chooseSave.Add(7);
+            currentSave.Add(7);
         }
         else
         {
             costSave -= n;
-            chooseSave.Remove(7);
+            currentSave.Remove(7);
         }
         costUI.text = costSave.ToString();
     }
@@ -183,12 +196,12 @@ public class ServiceMenuController : MonoBehaviour
         if (animalToggle.isOn)
         {
             costSave += n;
-            chooseSave.Add(8);
+            currentSave.Add(8);
         }
         else
         {
             costSave -= n;
-            chooseSave.Remove(8);
+            currentSave.Remove(8);
         }
         costUI.text = costSave.ToString();
     }
@@ -202,12 +215,12 @@ public class ServiceMenuController : MonoBehaviour
         if (itemOn)
         {
             costSave += n;
-            chooseSave.Add(9);
+            currentSave.Add(9);
         }
         else
         {
             costSave -= n;
-            chooseSave.Remove(9);
+            currentSave.Remove(9);
         }
         costUI.text = costSave.ToString();
     }
@@ -221,12 +234,12 @@ public class ServiceMenuController : MonoBehaviour
         if (itemToggle.isOn)
         {
             costSave += n;
-            chooseSave.Add(10);
+            currentSave.Add(10);
         }
         else
         {
             costSave -= n;
-            chooseSave.Remove(10);
+            currentSave.Remove(10);
         }
         costUI.text = costSave.ToString();
     }
@@ -375,6 +388,7 @@ public class ServiceMenuController : MonoBehaviour
     {
         serviceMenu.SetActive(true);
         //TODO 服务初始化
+        currentViewer = gameObject.GetComponent<OrderMenuController>().currentViewer;
     }
 
     public void Off()
@@ -399,20 +413,23 @@ public class ServiceMenuController : MonoBehaviour
         }
         costSave = 0;
         costUI.text = costSave.ToString();
-        chooseSave.Clear();
+        currentSave.Clear();
     }
 
     public void SendChooseResult()
     {
-        chooseSave.Sort();
-        foreach(var i in chooseSave)
+        currentSave.Sort();
+        AddChoice(currentViewer.m_order.ID);
+        for (int i = 0; i < choiceSaves.Count; i++)
         {
-            Debug.Log(i);
+            foreach (var j in choiceSaves[i])
+            {
+                Debug.Log(j);
+            }
         }
         OrderViewer temp = gameObject.GetComponent<OrderMenuController>().currentViewer;
         if (temp != null)
         {
-            Debug.Log("?");
             gameObject.GetComponent<OrderMenuController>().allOrders.Remove(temp);
             Destroy(temp.gameObject);
         }
