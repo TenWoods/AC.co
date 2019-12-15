@@ -11,6 +11,7 @@ public class OrderMenuController : MonoBehaviour
     public List<OrderViewer> allOrders;
     public List<GameObject> orderPrefabs;
     public OrderViewer currentViewer = null;
+    public GameObject startServiceButton;
 
     private void Update()
     {
@@ -26,8 +27,10 @@ public class OrderMenuController : MonoBehaviour
         onSwitch.SetActive(false);
         if (allOrders.Count <= 0)
         {
+            startServiceButton.SetActive(false);
             return;
         }
+        startServiceButton.SetActive(true);
         //TODO 订单按钮分配位置
         float offset = 948.0f / orderNum;
         float currentY = 458.0f;

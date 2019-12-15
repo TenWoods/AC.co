@@ -1776,19 +1776,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7bc429f9f59d9204589123dcbae223b1, type: 3}
-    m_FontSize: 43
+    m_Font: {fileID: 12800000, guid: 1f2972f200ae2ba44b66d862aa617182, type: 3}
+    m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 51
+    m_MaxSize: 56
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Confirm
+  m_Text: "\u4E0B\u4E00\u5468"
 --- !u!222 &329622364
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2176,6 +2176,7 @@ MonoBehaviour:
   - {fileID: 1870648092633637273, guid: 19805d18319f4134c878c62b9ce287e0, type: 3}
   - {fileID: 172244480440566055, guid: ce5b023873eeaca43a380e0599bc4ddd, type: 3}
   currentViewer: {fileID: 0}
+  startServiceButton: {fileID: 297175845}
 --- !u!114 &371866722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2239,6 +2240,10 @@ MonoBehaviour:
   itemUpdate: {fileID: 29032291}
   itemToggle: {fileID: 29032293}
   costUI: {fileID: 595883049}
+  backGround: {fileID: 329800384}
+  playerUI: {fileID: 938002091}
+  orderUI: {fileID: 1756505805}
+  orderMenu: {fileID: 1548467117}
   currentText: {fileID: 0}
 --- !u!1 &383716700
 GameObject:
@@ -5315,7 +5320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1100412844
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6595,18 +6600,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7bc429f9f59d9204589123dcbae223b1, type: 3}
-    m_FontSize: 43
+    m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 51
+    m_MaxSize: 56
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Confirm
+  m_Text: "\u4E0B\u4E00\u5468"
 --- !u!222 &1392174627
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7897,19 +7902,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7bc429f9f59d9204589123dcbae223b1, type: 3}
-    m_FontSize: 43
+    m_Font: {fileID: 12800000, guid: 1f2972f200ae2ba44b66d862aa617182, type: 3}
+    m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 51
+    m_MaxSize: 59
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Confirm
+  m_Text: "\u4E0B\u4E00\u5468"
 --- !u!222 &1603581634
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10233,6 +10238,21 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u6B22\u8FCE\u6765\u5230A.C.Company\u5B89\u53EF\u516C\u53F8\uFF0C\u7ECF\u7406\u3002\u6211\u4EEC\u4F26\u65AF\u5766\u5206\u90E8\u7684\u5168\u4F53\u5458\u5DE5\u6B22\u8FCE\u60A8\u7684\u5230\u6765\u3002"
       objectReference: {fileID: 0}
+    - target: {fileID: 823562588012947827, guid: 698216fdb0b7b4a6d99620698209d813,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 823562588150244937, guid: 698216fdb0b7b4a6d99620698209d813,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 823562587138156459, guid: 698216fdb0b7b4a6d99620698209d813,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 823562587504109640, guid: 698216fdb0b7b4a6d99620698209d813,
         type: 3}
       propertyPath: m_Color.a
@@ -10244,6 +10264,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300084, guid: 148a7416d4c344a42bb28cb23ee31708,
         type: 3}
+    - target: {fileID: 9102299560163337967, guid: 698216fdb0b7b4a6d99620698209d813,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930030524616652790, guid: 698216fdb0b7b4a6d99620698209d813,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3942297871728597815, guid: 698216fdb0b7b4a6d99620698209d813,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829153047592809335, guid: 698216fdb0b7b4a6d99620698209d813,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.44705883
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 698216fdb0b7b4a6d99620698209d813, type: 3}
 --- !u!224 &1943650809 stripped
@@ -11054,7 +11094,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1f2972f200ae2ba44b66d862aa617182, type: 3}
-    m_FontSize: 41
+    m_FontSize: 31
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -11065,7 +11105,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4E0B\u4E00\u5468"
+  m_Text: "\u7ED3\u675F\u672C\u5468"
 --- !u!222 &2139949622
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11866,7 +11906,7 @@ PrefabInstance:
     - target: {fileID: 1280588534897538399, guid: 092630cbb45013a4082977f098a5bf46,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: -50
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1280588534897538399, guid: 092630cbb45013a4082977f098a5bf46,
         type: 3}
@@ -12517,7 +12557,7 @@ PrefabInstance:
     - target: {fileID: 3543929615241737133, guid: 092630cbb45013a4082977f098a5bf46,
         type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 70
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3543929615241737133, guid: 092630cbb45013a4082977f098a5bf46,
         type: 3}
@@ -12675,6 +12715,21 @@ PrefabInstance:
       propertyPath: reports.Array.data[2]
       value: 
       objectReference: {fileID: 1646656085}
+    - target: {fileID: 8972047460687325283, guid: 2db2c913728e9d64d94b01c0137631ad,
+        type: 3}
+      propertyPath: backGround
+      value: 
+      objectReference: {fileID: 329800384}
+    - target: {fileID: 8972047460687325283, guid: 2db2c913728e9d64d94b01c0137631ad,
+        type: 3}
+      propertyPath: playerUI
+      value: 
+      objectReference: {fileID: 938002091}
+    - target: {fileID: 8972047460687325283, guid: 2db2c913728e9d64d94b01c0137631ad,
+        type: 3}
+      propertyPath: orderUI
+      value: 
+      objectReference: {fileID: 1756505805}
     - target: {fileID: 3654966989433016731, guid: 2db2c913728e9d64d94b01c0137631ad,
         type: 3}
       propertyPath: m_LocalPosition.x

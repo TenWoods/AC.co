@@ -19,13 +19,13 @@ public class OrderController : MonoBehaviour
     public void InitOrders()
     {
         Debug.Log("OrderController Init");
-        Order temp0 = new Order(this,0,50,2,3,4,5,answer0,true);
-        Order temp1 = new Order(this,1,200,2,3,4,5,answer1,false);
-        Order temp2 = new Order(this,2,200,2,3,4,5,answer2,false);
-        Order temp3 = new Order(this,3,0,2,3,4,5,answer3,false);
-        Order temp4 = new Order(this,4,5000,2,3,4,5,answer4,false);
-        Order temp5 = new Order(this,5,1,2,3,4,5,answer0,true);
-        Order temp6 = new Order(this,6,1,2,3,4,5,answer1,false);
+        Order temp0 = new Order(this,0,50,0,3,4,5,answer0,true);
+        Order temp1 = new Order(this,1,200,0,3,4,5,answer1,false);
+        Order temp2 = new Order(this,2,200,0,3,4,5,answer2,false);
+        Order temp3 = new Order(this,3,0,0,3,4,5,answer3,false);
+        Order temp4 = new Order(this,4,5000,1,3,4,5,answer4,false);
+        Order temp5 = new Order(this,5,1,0,3,4,5,answer0,true);
+        Order temp6 = new Order(this,6,1,0,3,4,5,answer1,false);
         Order temp7 = new Order(this,7,1,2,3,4,5,answer2,false);
         Order temp8 = new Order(this,8,1,2,3,4,5,answer3,false);
         Order temp9 = new Order(this,9,1,2,3,4,5,answer4,false);

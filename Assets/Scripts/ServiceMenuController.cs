@@ -48,6 +48,12 @@ public class ServiceMenuController : MonoBehaviour
     public Text costUI;
     private int costSave = 0;
 
+    public GameObject backGround;
+
+    public GameObject playerUI;
+    public GameObject orderUI;
+    public GameObject orderMenu;
+
     #region  开销记录
 
     private void AddChoice(int i)
@@ -253,15 +259,6 @@ public class ServiceMenuController : MonoBehaviour
 
     #endregion
 
-    public void HumanText(bool m_switch)
-    {
-        switch (currentViewer.m_order.ID)
-        {
-            case (0) :
-            texts[0].SetActive(m_switch); break;
-        }
-    }
-
     public GameObject currentText = null;
     //文本选择
     public void TextSelecter()
@@ -383,13 +380,13 @@ public class ServiceMenuController : MonoBehaviour
             break;
             //订单5
             case 5 :
-            if (currentSave.Contains(1) && currentSave.Count == 1)
+            if (currentSave.Contains(1))
             {
                 texts[18].SetActive(true);
                 currentText = texts[18];
                 break;
             }
-            if (currentSave.Contains(4) && currentSave.Count == 1)
+            if (currentSave.Contains(4))
             {
                 texts[19].SetActive(true);
                 currentText = texts[19];
@@ -624,11 +621,19 @@ public class ServiceMenuController : MonoBehaviour
             gameObject.GetComponent<OrderMenuController>().allOrders.Remove(temp);
             Destroy(temp.gameObject);
         }
-        gameObject.GetComponent<OrderMenuController>().On();
-
-
-        
+        if (gameObject.GetComponent<OrderMenuController>().allOrders.Count > 0)
+        {
+            gameObject.GetComponent<OrderMenuController>().On();
+        }
         Off();
+        if (gameManager.round == 4)
+        {
+            backGround.GetComponent<TextController>().enabled = false;
+            backGround.GetComponent<Text>().color = new Color(255.0f, 0.0f, 0.0f, 255.0f);
+            playerUI.SetActive(false);
+            orderUI.SetActive(false);
+            orderMenu.SetActive(false);
+        }
     }
 
     public void SendChoiceResult()

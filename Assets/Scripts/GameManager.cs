@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject animal;
 
     public List<GameObject> reports;
+    
 
     private void Start()
     {
