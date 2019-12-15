@@ -626,10 +626,7 @@ public class ServiceMenuController : MonoBehaviour
         }
         gameObject.GetComponent<OrderMenuController>().On();
 
-        if(gameManager.round == 1)
-        {
-            talkController.PushPanel(5);
-        }
+
         
         Off();
     }

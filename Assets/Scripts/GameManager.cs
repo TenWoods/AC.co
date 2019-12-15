@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject humanGear;
     public GameObject animal;
 
-    public GameObject report;
+    public List<GameObject> reports;
 
     private void Start()
     {
@@ -62,33 +62,51 @@ public class GameManager : MonoBehaviour
     //下一回合按钮
     public void NextRound()
     {
-        if(round == 1)
-        {
-            talkController.PushPanel(6);
-        }
+
         round++;
         Debug.Log(round);
         calcStart = true;
         CalcUISet();
         CalculateMoney();
-        report.SetActive(true);
+        reports[round - 2].SetActive(true);
         if (round >= 2)
         {
             humanGear.SetActive(true);
             animal.SetActive(true);
         }
-        
+        if(round == 2)
+        {
+            talkController.PushPanel(6);
+        }
+        if(round == 3)
+        {
+            talkController.PushPanel(11);
+        }
+        if(round == 4)
+        {
+            talkController.PushPanel(17);
+        }
     }
+
 
     //回合结算确定按钮
     public void EnterNextRound()
     {
+        if(round == 2)
+        {
+            talkController.PushPanel(9);
+        }
+        if(round == 3)
+        {
+            talkController.PushPanel(13);
+        }
+
         initNextRound = true;
         weekCount.text = round.ToString();
         fundUI.text = playerFund.ToString();
         Order[] roll = PushOrder(round);
         orderMenuController.InitOrders(roll);
-        report.SetActive(false);
+        reports[round - 2].SetActive(false);
     }
 
     #endregion
